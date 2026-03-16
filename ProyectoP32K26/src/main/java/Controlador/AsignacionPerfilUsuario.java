@@ -11,31 +11,31 @@ package Controlador;
 import java.sql.Timestamp;
 
 public class AsignacionPerfilUsuario{
-   private int USU_CODIGO;
-    private int PER_CODIGO;
+   private int Usucodigo;
+    private int Percodigo;
 
     public AsignacionPerfilUsuario() {}
 
-    public AsignacionPerfilUsuario(int USU_CODIGO, int PER_CODIGO) {
-        this.USU_CODIGO = USU_CODIGO;
-        this.PER_CODIGO = PER_CODIGO;
+    public AsignacionPerfilUsuario(int Usucodigo, int Percodigo) {
+        this.Usucodigo = Usucodigo;
+        this.Percodigo = Percodigo;
     }
 
     // Getters y Setters
-    public int getUSU_CODIGO() {
-        return USU_CODIGO;
+    public int getUsucodigo() {
+        return Usucodigo;
     }
 
-    public void setUSU_CODIGO(int USU_CODIGO) {
-        this.USU_CODIGO = USU_CODIGO;
+    public void setUsucodigo(int Usucodigo) {
+        this.Usucodigo = Usucodigo;
     }
 
-    public int getPER_CODIGO() {
-        return PER_CODIGO;
+    public int getPercodigo() {
+        return Percodigo;
     }
 
-    public void setPER_CODIGO(int PER_CODIGO) {
-        this.PER_CODIGO = PER_CODIGO;
+    public void setPercodigo(int Percodigo) {
+        this.Percodigo = Percodigo;
     }
 
     
