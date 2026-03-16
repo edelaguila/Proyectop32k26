@@ -4,8 +4,8 @@
  */
 package vista;
 
-import datos.AplicacionesDAO;
-import domain.Aplicaciones;
+import Modelo.AplicacionesDAO;
+import Controlador.Aplicaciones;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
