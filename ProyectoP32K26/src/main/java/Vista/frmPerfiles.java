@@ -6,7 +6,7 @@ package vista;
 
 //import datos.PerfilDAO; esto lo cambia para el dao correspondiente
 import Modelo.PerfilDAO;
-import controlador.Perfil;
+import Controlador.Perfil;
 
 import java.util.List;
 
