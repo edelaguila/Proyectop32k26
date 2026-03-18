@@ -6,10 +6,6 @@ import java.util.List;
 import Modelo.Conexion;
 import Controlador.AsignacionAplicacionUsuario;
 
-/**
- * DAO encargado de gestionar las operaciones CRUD
- * de la tabla asignacionaplicacionusuario.
- */
 public class AsignacionAplicacionUsuarioDAO {
 
     // CONSULTAS SQL
@@ -29,7 +25,7 @@ public class AsignacionAplicacionUsuarioDAO {
             "SELECT usucodigo, aplcodigo, apluins, aplusel, apluupd, aplurep FROM asignacionaplicacionusuario WHERE usucodigo=? AND aplcodigo=?";
 
 
-    // SELECT
+    // 🔹 SELECT TODOS
     public List<AsignacionAplicacionUsuario> select() {
 
         Connection conn = null;
@@ -68,7 +64,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // INSERT
+    // 🔹 INSERT
     public int insert(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -100,7 +96,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // UPDATE
+    // 🔹 UPDATE
     public int update(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -133,7 +129,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // DELETE
+    // 🔹 DELETE INDIVIDUAL
     public int delete(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -161,7 +157,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // QUERY
+    // 🔹 QUERY
     public AsignacionAplicacionUsuario query(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -198,4 +194,75 @@ public class AsignacionAplicacionUsuarioDAO {
         return asignacion;
     }
 
+
+    // 🔥 NUEVO: OBTENER POR USUARIO
+    public List<AsignacionAplicacionUsuario> obtenerPorUsuario(int usuCodigo) {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<AsignacionAplicacionUsuario> lista = new ArrayList<>();
+
+        try {
+
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(
+                "SELECT * FROM asignacionaplicacionusuario WHERE usucodigo=?"
+            );
+
+            stmt.setInt(1, usuCodigo);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                AsignacionAplicacionUsuario a = new AsignacionAplicacionUsuario();
+
+                a.setUsucodigo(rs.getInt("usucodigo"));
+                a.setAplcodigo(rs.getInt("aplcodigo"));
+                a.setApluins(rs.getBoolean("apluins"));
+                a.setAplusel(rs.getBoolean("aplusel"));
+                a.setApluupd(rs.getBoolean("apluupd"));
+                a.setAplurep(rs.getBoolean("aplurep"));
+
+                lista.add(a);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return lista;
+    }
+
+
+    // 🔥 NUEVO: ELIMINAR TODO POR USUARIO
+    public int deleteByUsuario(int usuCodigo) {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+
+        try {
+
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(
+                "DELETE FROM asignacionaplicacionusuario WHERE usucodigo=?"
+            );
+
+            stmt.setInt(1, usuCodigo);
+            rows = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+    }
 }
