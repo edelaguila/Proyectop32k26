@@ -3,95 +3,106 @@ package Controlador;
 /**
  * Corresponde a la tabla asignacionaplicacionusuario de la base de datos.
  * Karina Alejandra Arriaza Ortiz 9959-24-14190
- * Modificada para incluir permisos de aplicación.
+ * Modificada según estructura del script.
  */
 
 public class AsignacionAplicacionUsuario {
 
     // Llaves primaria/foránea
-    private int usucodigo;
-    private int aplcodigo;
+    private int Aplcodigo;
+    private int Usucodigo;
 
-    // Permisos de la aplicación
-    private boolean apluins;
-    private boolean aplusel;
-    private boolean apluupd;
-    private boolean aplurep;
+    // Permisos de la aplicación (varchar(1))
+    private String APLUins;
+    private String APLUsel;
+    private String APLUupd;
+    private String APLUdel;
+    private String APLUrep;
 
     // Constructor vacío
     public AsignacionAplicacionUsuario() {
     }
 
     // Constructor con todos los atributos
-    public AsignacionAplicacionUsuario(int usucodigo, int aplcodigo, boolean apluins, boolean aplusel, boolean apluupd, boolean aplurep) {
-        this.usucodigo = usucodigo;
-        this.aplcodigo = aplcodigo;
-        this.apluins = apluins;
-        this.aplusel = aplusel;
-        this.apluupd = apluupd;
-        this.aplurep = aplurep;
+    public AsignacionAplicacionUsuario(int Aplcodigo, int Usucodigo, String APLUins, String APLUsel, String APLUupd, String APLUdel, String APLUrep) {
+        this.Aplcodigo = Aplcodigo;
+        this.Usucodigo = Usucodigo;
+        this.APLUins = APLUins;
+        this.APLUsel = APLUsel;
+        this.APLUupd = APLUupd;
+        this.APLUdel = APLUdel;
+        this.APLUrep = APLUrep;
     }
 
     // GET Y SET
 
-    public int getUsucodigo() {
-        return usucodigo;
-    }
-
-    public void setUsucodigo(int usucodigo) {
-        this.usucodigo = usucodigo;
-    }
-
     public int getAplcodigo() {
-        return aplcodigo;
+        return Aplcodigo;
     }
 
-    public void setAplcodigo(int aplcodigo) {
-        this.aplcodigo = aplcodigo;
+    public void setAplcodigo(int Aplcodigo) {
+        this.Aplcodigo = Aplcodigo;
     }
 
-    public boolean getApluins() {
-        return apluins;
+    public int getUsucodigo() {
+        return Usucodigo;
     }
 
-    public void setApluins(boolean apluins) {
-        this.apluins = apluins;
+    public void setUsucodigo(int Usucodigo) {
+        this.Usucodigo = Usucodigo;
     }
 
-    public boolean getAplusel() {
-        return aplusel;
+    public String getAPLUins() {
+        return APLUins;
     }
 
-    public void setAplusel(boolean aplusel) {
-        this.aplusel = aplusel;
+    public void setAPLUins(String APLUins) {
+        this.APLUins = APLUins;
     }
 
-    public boolean getApluupd() {
-        return apluupd;
+    public String getAPLUsel() {
+        return APLUsel;
     }
 
-    public void setApluupd(boolean apluupd) {
-        this.apluupd = apluupd;
+    public void setAPLUsel(String APLUsel) {
+        this.APLUsel = APLUsel;
     }
 
-    public boolean getAplurep() {
-        return aplurep;
+    public String getAPLUupd() {
+        return APLUupd;
     }
 
-    public void setAplurep(boolean aplurep) {
-        this.aplurep = aplurep;
+    public void setAPLUupd(String APLUupd) {
+        this.APLUupd = APLUupd;
     }
 
-    // Método toString para mostrar la información
+    public String getAPLUdel() {
+        return APLUdel;
+    }
+
+    public void setAPLUdel(String APLUdel) {
+        this.APLUdel = APLUdel;
+    }
+
+    public String getAPLUrep() {
+        return APLUrep;
+    }
+
+    public void setAPLUrep(String APLUrep) {
+        this.APLUrep = APLUrep;
+    }
+
+    // Método toString
     @Override
     public String toString() {
         return "AsignacionAplicacionUsuario{" +
-                "usucodigo=" + usucodigo +
-                ", aplcodigo=" + aplcodigo +
-                ", apluins=" + apluins +
-                ", aplusel=" + aplusel +
-                ", apluupd=" + apluupd +
-                ", aplurep=" + aplurep +
+                "Aplcodigo=" + Aplcodigo +
+                ", Usucodigo=" + Usucodigo +
+                ", APLUins='" + APLUins + '\'' +
+                ", APLUsel='" + APLUsel + '\'' +
+                ", APLUupd='" + APLUupd + '\'' +
+                ", APLUdel='" + APLUdel + '\'' +
+                ", APLUrep='" + APLUrep + '\'' +
                 '}';
     }
 }

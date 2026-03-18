@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Modelo\BitacoraDAO.java
 C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Vista\frmPerfiles.java
 C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Modelo\AplicacionesDAO.java
@@ -22,3 +23,5 @@ C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Controlador
 C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Modelo\AsignacionPerfilUsuarioDAO.java
 C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Vista\MdiSeguridad.java
 C:\Users\50240\Documents\Proyectop32k26\ProyectoP32K26\src\main\java\Modelo\PerfilDAO.java
+=======
+>>>>>>> upstream/main

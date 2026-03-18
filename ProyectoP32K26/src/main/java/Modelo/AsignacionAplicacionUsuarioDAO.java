@@ -6,8 +6,6 @@ import java.util.List;
 import Modelo.Conexion;
 import Controlador.AsignacionAplicacionUsuario;
 
-//Angoly Camila Araujo Mayen 9959-24-17623
-
 public class AsignacionAplicacionUsuarioDAO {
 
     // CONSULTAS SQL 
@@ -27,7 +25,7 @@ public class AsignacionAplicacionUsuarioDAO {
             "SELECT Usucodigo, Aplcodigo, APLUins, APLUsel, APLUupd, APLUdel, APLUrep FROM asignacionaplicacionusuarios WHERE Usucodigo=? AND Aplcodigo=?";
 
 
-    // SELECT
+    // 🔹 SELECT TODOS
     public List<AsignacionAplicacionUsuario> select() {
 
         Connection conn = null;
@@ -46,11 +44,11 @@ public class AsignacionAplicacionUsuarioDAO {
 
                 asignacion.setUsucodigo(rs.getInt("Usucodigo"));
                 asignacion.setAplcodigo(rs.getInt("Aplcodigo"));
-                asignacion.setApluins(rs.getString("APLUins"));
-                asignacion.setAplusel(rs.getString("APLUsel"));
-                asignacion.setApluupd(rs.getString("APLUupd"));
-                asignacion.setApludel(rs.getString("APLUdel"));
-                asignacion.setAplurep(rs.getString("APLUrep"));
+                asignacion.setAPLUins(rs.getString("APLUins"));
+                asignacion.setAPLUsel(rs.getString("APLUsel"));
+                asignacion.setAPLUupd(rs.getString("APLUupd"));
+                asignacion.setAPLUdel(rs.getString("APLUdel"));
+                asignacion.setAPLUrep(rs.getString("APLUrep"));
 
                 asignaciones.add(asignacion);
             }
@@ -67,7 +65,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // INSERT
+    // 🔹 INSERT
     public int insert(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -81,11 +79,11 @@ public class AsignacionAplicacionUsuarioDAO {
 
             stmt.setInt(1, asignacion.getUsucodigo());
             stmt.setInt(2, asignacion.getAplcodigo());
-            stmt.setString(3, asignacion.getApluins());
-            stmt.setString(4, asignacion.getAplusel());
-            stmt.setString(5, asignacion.getApluupd());
-            stmt.setString(6, asignacion.getApludel());
-            stmt.setString(7, asignacion.getAplurep());
+            stmt.setString(3, asignacion.getAPLUins());
+            stmt.setString(4, asignacion.getAPLUsel());
+            stmt.setString(5, asignacion.getAPLUupd());
+            stmt.setString(6, asignacion.getAPLUdel());
+            stmt.setString(7, asignacion.getAPLUrep());
 
             rows = stmt.executeUpdate();
 
@@ -100,7 +98,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // UPDATE
+    // 🔹 UPDATE
     public int update(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -112,11 +110,11 @@ public class AsignacionAplicacionUsuarioDAO {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_UPDATE);
 
-            stmt.setString(1, asignacion.getApluins());
-            stmt.setString(2, asignacion.getAplusel());
-            stmt.setString(3, asignacion.getApluupd());
-            stmt.setString(4, asignacion.getApludel());
-            stmt.setString(5, asignacion.getAplurep());
+            stmt.setString(1, asignacion.getAPLUins());
+            stmt.setString(2, asignacion.getAPLUsel());
+            stmt.setString(3, asignacion.getAPLUupd());
+            stmt.setString(4, asignacion.getAPLUdel());
+            stmt.setString(5, asignacion.getAPLUrep());
 
             stmt.setInt(6, asignacion.getUsucodigo());
             stmt.setInt(7, asignacion.getAplcodigo());
@@ -134,7 +132,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // DELETE
+    // 🔹 DELETE INDIVIDUAL
     public int delete(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -162,7 +160,7 @@ public class AsignacionAplicacionUsuarioDAO {
     }
 
 
-    // QUERY
+    // 🔹 QUERY
     public AsignacionAplicacionUsuario query(AsignacionAplicacionUsuario asignacion) {
 
         Connection conn = null;
@@ -181,11 +179,11 @@ public class AsignacionAplicacionUsuarioDAO {
 
             if (rs.next()) {
 
-                asignacion.setApluins(rs.getString("APLUins"));
-                asignacion.setAplusel(rs.getString("APLUsel"));
-                asignacion.setApluupd(rs.getString("APLUupd"));
-                asignacion.setApludel(rs.getString("APLUdel"));
-                asignacion.setAplurep(rs.getString("APLUrep"));
+                asignacion.setAPLUins(rs.getString("APLUins"));
+                asignacion.setAPLUsel(rs.getString("APLUsel"));
+                asignacion.setAPLUupd(rs.getString("APLUupd"));
+                asignacion.setAPLUdel(rs.getString("APLUdel"));
+                asignacion.setAPLUrep(rs.getString("APLUrep"));
 
             }
 
@@ -198,5 +196,77 @@ public class AsignacionAplicacionUsuarioDAO {
         }
 
         return asignacion;
+    }
+
+
+    // 🔥 NUEVO: OBTENER POR USUARIO
+    public List<AsignacionAplicacionUsuario> obtenerPorUsuario(int usuCodigo) {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<AsignacionAplicacionUsuario> lista = new ArrayList<>();
+
+        try {
+
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(
+                "SELECT * FROM asignacionaplicacionusuario WHERE usucodigo=?"
+            );
+
+            stmt.setInt(1, usuCodigo);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                AsignacionAplicacionUsuario a = new AsignacionAplicacionUsuario();
+
+                a.setUsucodigo(rs.getInt("usucodigo"));
+                a.setAplcodigo(rs.getInt("aplcodigo"));
+                a.setAPLUins(rs.getString("apluins"));
+                a.setAPLUsel(rs.getString("aplusel"));
+                a.setAPLUupd(rs.getString("apluupd"));
+                a.setAPLUrep(rs.getString("aplurep"));
+
+                lista.add(a);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return lista;
+    }
+
+
+    // 🔥 NUEVO: ELIMINAR TODO POR USUARIO
+    public int deleteByUsuario(int usuCodigo) {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+
+        try {
+
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(
+                "DELETE FROM asignacionaplicacionusuario WHERE usucodigo=?"
+            );
+
+            stmt.setInt(1, usuCodigo);
+            rows = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
     }
 }
